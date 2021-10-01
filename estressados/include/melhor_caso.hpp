@@ -30,7 +30,7 @@ int procurarMaiorPos(Fila fila) {
     return std::distance(fila.begin(), _procurarMenorIterator(fila));
 }
 
-int procurarMenorPosApos(Fila fila, int pos) {
+int procurarMenorPosApartir(Fila fila, int pos) {
     if (pos < 0 || pos > fila.size() - 1)
         return -1;
 
@@ -38,7 +38,7 @@ int procurarMenorPosApos(Fila fila, int pos) {
     return pos + std::distance(_procurarMenorIterator(filaTemp), filaTemp.begin());
 }
 
-int procurarMenorPosSe(Fila fila) {
+int procurarMelhorPosSe(Fila fila) {
     auto indexFound = std::find_if(fila.begin(), fila.end(), [](int x) { return x > 0; });
     auto minValue = std::find_if(fila.begin(), fila.end(), [&](int x) { return x > 0 && x < *indexFound; });
     if (minValue != fila.end())
