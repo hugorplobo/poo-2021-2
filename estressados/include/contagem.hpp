@@ -4,6 +4,7 @@
 #include <vector>
 #include <algorithm>
 #include <numeric>
+#include <string>
 
 typedef std::vector<int> Fila;
 
@@ -19,24 +20,24 @@ double calcularStressMedio(Fila fila) {
     return double(std::accumulate(fila.begin(), fila.end(), 0, [](int x, int y) { return std::abs(x) + std::abs(y); })) / fila.size();
 }
 
-int maisHomensOuMulheres(Fila fila) {
+std::string maisHomensOuMulheres(Fila fila) {
     int homens = _getHomensN(fila);
     int mulheres = _getMulheresN(fila);
 
     if (homens > mulheres)
-        return 1;
+        return "homens";
     else if (mulheres > homens)
-        return -1;
+        return "mulheres";
     else
-        return 0;
+        return "empate";
 }
 
-int qualMetadeEhMaisEstressada(Fila fila) {
+std::string qualMetadeEhMaisEstressada(Fila fila) {
     int middle = fila.size() / 2;
     int first = std::accumulate(fila.begin(), fila.begin() + middle, 0, [](int x, int y) { return std::abs(x) + std::abs(y); });
     int last = std::accumulate(fila.begin() + middle, fila.end(), 0, [](int x, int y) { return std::abs(x) + std::abs(y); });
 
-    return first > last ? 1 : 2;
+    return first > last ? "primeira" : last > first ? "segunda" : "empate";
 }
 
 bool homensSaoMaisEstressados(Fila fila) {
