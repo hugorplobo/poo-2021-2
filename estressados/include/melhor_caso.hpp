@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <algorithm>
-#include <stdexcept>
 
 typedef std::vector<int> Fila;
 
@@ -33,16 +32,17 @@ int procurarMaiorPos(Fila fila) {
 
 int procurarMenorPosApos(Fila fila, int pos) {
     if (pos < 0 || pos > fila.size() - 1)
-        throw std::invalid_argument("Position needs to be less than vector size");
-    
+        return -1;
+
     auto filaTemp = Fila(fila.begin() + pos, fila.end());
     return pos + std::distance(_procurarMenorIterator(filaTemp), filaTemp.begin());
 }
 
-int procurarMelhorSe(Fila fila) {
+int procurarMenorPosSe(Fila fila) {
     auto indexFound = std::find_if(fila.begin(), fila.end(), [](int x) { return x > 0; });
-    if (indexFound != fila.end())
-        return std::distance(fila.begin(), indexFound);
+    auto minValue = std::find_if(fila.begin(), fila.end(), [&](int x) { return x > 0 && x < *indexFound; });
+    if (minValue != fila.end())
+        return std::distance(fila.begin(), minValue);
     
     return -1;
 }

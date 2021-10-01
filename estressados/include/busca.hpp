@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <algorithm>
-#include <stdexcept>
 
 typedef std::vector<int> Fila;
 
@@ -29,11 +28,11 @@ int procurarValor(Fila fila, int value) {
 
 int procurarValorApos(Fila fila, int pos, int value) {
     if (pos < 0 || pos > fila.size() - 1)
-        throw std::invalid_argument("Position must to be greater than or equal to zero, and lesser than fila's size");
-    
-    int indexFound = procurarValor(Fila(fila.begin() + pos, fila.end()), value);
+        return -1;
 
-    return indexFound != -1 ? pos + indexFound : -1;
+    int indexFound = procurarValor(Fila(fila.begin() + pos + 1, fila.end()), value);
+
+    return indexFound != -1 ? pos + 1 + indexFound : -1;
 }
 
 #endif
