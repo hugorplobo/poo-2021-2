@@ -26,13 +26,13 @@ int procurarValor(Fila fila, int value) {
     return std::distance(fila.begin(), found);
 }
 
-int procurarValorApos(Fila fila, int pos, int value) {
+int procurarValorApartir(Fila fila, int pos, int value) {
     if (pos < 0 || pos > fila.size() - 1)
         return -1;
 
-    int indexFound = procurarValor(Fila(fila.begin() + pos + 1, fila.end()), value);
+    int indexFound = procurarValor(Fila(fila.begin() + pos, fila.end()), value);
 
-    return indexFound != -1 ? pos + 1 + indexFound : -1;
+    return indexFound != -1 ? pos + indexFound : -1;
 }
 
 #endif
