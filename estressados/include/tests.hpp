@@ -9,7 +9,7 @@ void testar(const T& A, const T& B) {
     if (A == B)
         std::cout << "\tOk\n";
     else
-        std::cout << A << " != " << B << "\n";
+        std::cout << "\t" << A << " != " << B << "\n";
 }
 
 std::ostream& operator<<(std::ostream& os, const std::vector<int>& v) {
