@@ -3,39 +3,46 @@
 #include "include/busca.hpp"
 #include "include/melhor_caso.hpp"
 #include "include/contagem.hpp"
+#include "include/tests.hpp"
 
 using namespace std;
 
+void testarBusca() {
+    cout << "\nTestes de busca: \n";
+    testar(existe({-1, -50, -99}, -1), true);
+    testar(existe({-1, -50, -99}, 10), false);
+    testar(contar({-1, -50, -1, -99}, -1), 2);
+    testar(contar({-1, -50, -1, -99}, 10), 0);
+    testar(procurarValor({-1, -50, -1, -99}, -50), 1);
+    testar(procurarValor({-1, -50, -1, -99}, 10), -1);
+    testar(procurarValorApartir({5, 3, -1, -50, -1, -99}, 0, -1), 2);
+    testar(procurarValorApartir({5, 3, -1, -50, -1, -99}, 3, -1), 4);
+    testar(procurarValorApartir({5, 3, -1, -50, -1, -99}, 4, -1), 4);
+}
+
+void testarMelhorCaso() {
+    cout << "\nTestes de melhor caso: \n";
+    testar(procurarMenor({5, 3, -1, -50, -1, -99}), -99);
+    testar(procurarMenorPos({5, 3, -1, -50, -1, -99}), 5);
+    testar(procurarMenorPosApartir({5, 3, -1, -50, -1, 10}, 3), 3);
+    testar(procurarMelhorPosSe({5, 3, -1, -50, -1, -99}), 1);
+    testar(procurarMelhorPosSe({-1, -50, -1, -99}), -1);
+}
+
+void testarContagem() {
+    cout << "\nTestes de contagem: \n";
+    testar(calcularStressMedio({-1, -50, -1, -99}), 37.75);
+    testar(maisHomensOuMulheres({5, 3, -1, -50, -1, -99}), string("mulheres"));
+    testar(maisHomensOuMulheres({5, 3, 1, -50, -1, -99}), string("empate"));
+    testar(maisHomensOuMulheres({5, 3, 1, -50, -1, 99}), string("homens"));
+    testar(qualMetadeEhMaisEstressada({5, 3, -1, -50, -1, -99}), string("segunda"));
+    testar(qualMetadeEhMaisEstressada({50, 98, 2, -50, -1, -99}), string("empate"));
+    testar(qualMetadeEhMaisEstressada({-51, 99, 1, -50, -1, 99}), string("primeira"));
+    testar(homensSaoMaisEstressados({5, 3, -1, -50, -1, -99}), false);
+}
+
 int main() {
-    cout << existe({-1, -50, -99}, -1) << "\n"; // true
-    cout << existe({-1, -50, -99}, 10) << "\n\n"; // false
-
-    cout << contar({-1, -50, -1, -99}, -1) << "\n"; // 2
-    cout << contar({-1, -50, -1, -99}, 10) << "\n\n"; // 0
-
-    cout << procurarValor({-1, -50, -1, -99}, -50) << "\n"; // 1
-    cout << procurarValor({-1, -50, -1, -99}, 10) << "\n\n"; // -1
-
-    cout << procurarValorApartir({5, 3, -1, -50, -1, -99}, 0, -1) << "\n"; // 2
-    cout << procurarValorApartir({5, 3, -1, -50, -1, -99}, 3, -1) << "\n"; // 4
-    cout << procurarValorApartir({5, 3, -1, -50, -1, -99}, 4, -1) << "\n\n"; // 4
-
-    cout << procurarMenor({5, 3, -1, -50, -1, -99}) << "\n\n"; // -99
-
-    cout << procurarMenorPos({5, 3, -1, -50, -1, -99}) << "\n\n"; // 5
-
-    cout << procurarMenorPosApartir({5, 3, -1, -50, -1, 10}, 3) << "\n\n"; // 3
-
-    cout << procurarMelhorPosSe({5, 3, -1, -50, -1, -99}) << "\n"; // 1
-    cout << procurarMelhorPosSe({-1, -50, -1, -99}) << "\n\n"; // -1
-
-    cout << calcularStressMedio({-1, -50, -1, -99}) << "\n\n"; // 37.75
-    
-    cout << maisHomensOuMulheres({5, 3, -1, -50, -1, -99}) << "\n"; // "mulheres"
-    cout << maisHomensOuMulheres({5, 3, 1, -50, -1, -99}) << "\n"; // "empate"
-    cout << maisHomensOuMulheres({5, 3, 1, -50, -1, 99}) << "\n\n"; // "homens"
-
-    cout << qualMetadeEhMaisEstressada({5, 3, -1, -50, -1, -99}) << "\n"; // "segunda"
-    cout << qualMetadeEhMaisEstressada({50, 98, 2, -50, -1, -99}) << "\n"; // "empate"
-    cout << qualMetadeEhMaisEstressada({-51, 99, 1, -50, -1, 99}) << "\n\n"; // "primeira"
+    testarBusca();
+    testarMelhorCaso();
+    testarContagem();
 }
