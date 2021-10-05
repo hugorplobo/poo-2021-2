@@ -1,0 +1,35 @@
+#ifndef ACESSO_HPP
+#define ACESSO_HPP
+
+#include <vector>
+#include <algorithm>
+#include <cstdlib>
+#include <ctime>
+
+typedef std::vector<int> Fila;
+
+Fila inverterComCopia(const Fila &fila) {
+    Fila result(fila.size());
+    std::reverse_copy(fila.begin(), fila.end(), result.begin());
+
+    return result;
+}
+
+void reverterInplace(Fila &fila) {
+    std::reverse(fila.begin(), fila.end());
+}
+
+int sortear(const Fila &fila) {
+    srand(time(NULL));
+    return fila[rand() % (fila.size() - 1)];
+}
+
+void embaralhar(Fila &fila) {
+    std::random_shuffle(fila.begin(), fila.end());
+}
+
+void ordenar(Fila &fila) {
+    std::sort(fila.begin(), fila.end());
+}
+
+#endif
