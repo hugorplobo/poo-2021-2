@@ -11,8 +11,8 @@ Fila exclusivos(const Fila &fila) {
 
     for (int i = 0; i < fila.size(); i++) {
         bool unique = true;
-        for (int j = 0; j < fila.size(); j++) {
-            if (i != j && fila[i] == fila[j])
+        for (int j = 0; j < result.size(); j++) {
+            if (fila[i] == result[j])
                 unique = false;
         }
 
@@ -28,8 +28,8 @@ Fila diferentes(const Fila &fila) {
 
     for (int i = 0; i < fila.size(); i++) {
         bool unique = true;
-        for (int j = 0; j < fila.size(); j++) {
-            if (i != j && std::abs(fila[i]) == std::abs(fila[j]))
+        for (int j = 0; j < result.size(); j++) {
+            if (std::abs(fila[i]) == result[j])
                 unique = false;
         }
 
@@ -44,7 +44,12 @@ Fila abandonados(const Fila &fila) {
     Fila result;
 
     for (int i = 0; i < fila.size(); i++) {
-        if (std::find(result.begin(), result.end(), fila[i]) == result.end())
+        bool first = true;
+        for (int j = 0; j < i; j++) {
+            if (fila[i] == fila[j])
+                first = false;
+        }
+        if (!first)
             result.push_back(fila[i]);
     }
 
