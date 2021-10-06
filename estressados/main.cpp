@@ -3,9 +3,14 @@
 #include "include/busca.hpp"
 #include "include/melhor_caso.hpp"
 #include "include/contagem.hpp"
+#include "include/filter.hpp"
+#include "include/acesso.hpp"
+#include "include/conjuntos.hpp"
 #include "include/tests.hpp"
 
 using namespace std;
+
+typedef std::vector<int> Fila;
 
 void testarBusca() {
     cout << "\nTestes de busca: \n";
@@ -41,8 +46,31 @@ void testarContagem() {
     testar(homensSaoMaisEstressados({5, 3, -1, -50, -1, -99}), false);
 }
 
+void testarFilter() {
+    cout << "\nTestes de filtragem: \n";
+    testar(clone({5, 3, -1, -50, -1, -99}), {5, 3, -1, -50, -1, -99});
+    testar(copiarHomens({5, 3, -1, -50, -1, -99}), {5, 3});
+    testar(copiarCalmos({5, 3, -1, -50, -1, -99}), {5, 3, -1, -1});
+    testar(copiarMulheresCalmas({5, 3, -1, -50, -1, -99}), {-1, -1});
+}
+
+void testarAcesso() {
+    cout << "\nTestes de acesso: \n";
+    testar(inverterComCopia({5, 3, -1, -50, -1, -99}), {-99, -1, -50, -1, 3, 5});
+}
+
+void testarConjuntos() {
+    cout << "\nTestes de conjuntos: \n";
+    testar(exclusivos({5, 3, -1, -50, -1, 5}), {5, 3, -1, -50});
+    testar(diferentes({5, 3, -1, -50, 1, -99}), {5, 3, 1, 50, 99});
+    testar(abandonados({5, 3, -1, -50, -1, -99}), {-1});
+}
+
 int main() {
     testarBusca();
     testarMelhorCaso();
     testarContagem();
+    testarFilter();
+    testarAcesso();
+    testarConjuntos();
 }
