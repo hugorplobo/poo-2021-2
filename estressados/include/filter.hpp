@@ -29,8 +29,8 @@ Fila copiarCalmos(const Fila &fila) {
     return copiarSe(fila, [](int x) { return std::abs(x) < 10; });
 }
 
-Fila pegarMulheresCalmas(const Fila &fila) {
-    return copiarSe(fila, [](int x) { return x < 0 && x < -10; });
+Fila copiarMulheresCalmas(const Fila &fila) {
+    return copiarSe(fila, [](int x) { return x < 0 && x > -10; });
 }
 
 #endif
