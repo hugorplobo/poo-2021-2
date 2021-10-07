@@ -62,7 +62,7 @@ void testarAcesso() {
 void testarConjuntos() {
     cout << "\nTestes de conjuntos: \n";
     testar(exclusivos({5, 3, -1, -50, -1, 5}), {-50, -1, 3, 5});
-    testar(diferentes({5, 3, -1, -50, 1, -99}), {5, 3, 1, 50, 99});
+    testar(diferentes({5, 3, -1, -50, 1, -99}), {1, 3, 5, 50, 99});
     testar(abandonados({5, 3, -1, -50, -1, -99}), {-1});
 }
 
