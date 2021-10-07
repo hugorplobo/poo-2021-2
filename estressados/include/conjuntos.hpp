@@ -12,21 +12,11 @@ Fila exclusivos(Fila fila) {
     return Fila(fila.begin(), it);
 }
 
-Fila diferentes(const Fila &fila) {
-    Fila result;
-
-    for (int i = 0; i < fila.size(); i++) {
-        bool unique = true;
-        for (int j = 0; j < result.size(); j++) {
-            if (std::abs(fila[i]) == result[j])
-                unique = false;
-        }
-
-        if (unique)
-            result.push_back(std::abs(fila[i]));
-    }
-
-    return result;
+Fila diferentes(Fila fila) {
+    std::for_each(fila.begin(), fila.end(), [](int &x) { x = std::abs(x); });
+    std::sort(fila.begin(), fila.end());
+    auto it = std::unique(fila.begin(), fila.end());
+    return Fila(fila.begin(), it);
 }
 
 Fila abandonados(const Fila &fila) {
