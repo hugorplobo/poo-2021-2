@@ -6,21 +6,10 @@
 
 typedef std::vector<int> Fila;
 
-Fila exclusivos(const Fila &fila) {
-    Fila result;
-
-    for (int i = 0; i < fila.size(); i++) {
-        bool unique = true;
-        for (int j = 0; j < result.size(); j++) {
-            if (fila[i] == result[j])
-                unique = false;
-        }
-
-        if (unique)
-            result.push_back(fila[i]);
-    }
-
-    return result;
+Fila exclusivos(Fila fila) {
+    std::sort(fila.begin(), fila.end());
+    auto it = std::unique(fila.begin(), fila.end());
+    return Fila(fila.begin(), it);
 }
 
 Fila diferentes(const Fila &fila) {
