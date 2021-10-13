@@ -5,7 +5,6 @@
 #include <algorithm>
 #include <cstdlib>
 #include <ctime>
-#include <iostream>
 
 typedef std::vector<int> Fila;
 
@@ -21,12 +20,10 @@ void reverterInplace(Fila &fila) {
 }
 
 int sortear(const Fila &fila) {
-    std::srand(std::time(NULL));
     return fila[std::rand() % (fila.size() - 1)];
 }
 
 void embaralhar(Fila &fila) {
-    std::srand(std::time(NULL));
     std::random_shuffle(fila.begin(), fila.end(), [](int x) { return std::rand() % x; });
 }
 
