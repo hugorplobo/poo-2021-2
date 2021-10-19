@@ -30,15 +30,12 @@ int maisOcorrencias(const Fila &fila) {
 }
 
 Fila maisRecorrentes(const Fila &fila) {
+    int maxOcorrencias = maisOcorrencias(fila);
     Fila ocorrencias = _getOcorrencias(fila);
     Fila res;
-    int max = 0;
-
-    for (auto ocorrencia : ocorrencias) 
-        if (ocorrencia > max) max = ocorrencia;
 
     for (int i = 0; i < ocorrencias.size(); i++)
-        if (ocorrencias[i] == max) res.push_back(i);
+        if (ocorrencias[i] == maxOcorrencias) res.push_back(i);
     
     return res;
 }
