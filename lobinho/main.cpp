@@ -127,7 +127,7 @@ void updateZombies(std::vector<Entity> &zombies, Entity &survivor) {
     }
 }
 
-bool checkCollisions(std::vector<Entity> &zombies, Entity &survivor, bool &lose) {
+void checkCollisions(std::vector<Entity> &zombies, Entity &survivor, bool &lose) {
     for (auto zombie : zombies) {
         if (zombie.x == survivor.x && zombie.y == survivor.y)
             survivor.hp--;
