@@ -1,7 +1,7 @@
-compiler_flags = -I "C:\\Program Files (x86)\\sfml\\include" -L "C:\\Program Files (x86)\\sfml\\lib" -lsfml-graphics -lsfml-window -lsfml-system
+compiler_flags = -I "C:\\Program Files (x86)\\sfml\\include" -L "C:\\Program Files (x86)\\sfml\\lib" -lsfml-graphics -lsfml-audio -lsfml-window -lsfml-system
 
-all: main.o game.o board.o bubble.o pencil.o
-	g++ main.o game.o board.o bubble.o pencil.o ${compiler_flags} -o game.exe && .\game.exe
+all: main.o game.o board.o bubble.o pencil.o player.o menu.o
+	g++ main.o game.o board.o bubble.o pencil.o player.o menu.o ${compiler_flags} -o game.exe && .\game.exe
 
 clear:
 	del *.o
@@ -20,3 +20,9 @@ bubble.o: bubble/bubble.cpp bubble/bubble.hpp
 
 pencil.o: pencil/pencil.cpp pencil/pencil.hpp
 	g++ pencil/pencil.cpp -c ${compiler_flags}
+
+player.o: player/player.cpp player/player.hpp
+	g++ player/player.cpp -c ${compiler_flags}
+
+menu.o: menu/menu.cpp menu/menu.hpp
+	g++ menu/menu.cpp -c ${compiler_flags}
