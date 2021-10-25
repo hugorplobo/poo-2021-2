@@ -1,11 +1,14 @@
 #pragma once
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Audio.hpp>
 #include "../player/player.hpp"
 #include "../pencil/pencil.hpp"
 
 class Menu {
     sf::RenderWindow& window;
+    sf::SoundBuffer buy_buffer;
+    sf::Sound buy_sound;
     Pencil pencil;
     Player& player;
     sf::Vector2f position;

@@ -17,6 +17,14 @@
 */
 
 Menu::Menu(sf::RenderWindow& window, Player& player) : window {window}, player {player}, pencil {window} {
+    if (!buy_buffer.loadFromFile("assets/sounds/buy.ogg")) {
+        std::cout << "Failed to load buy.ogg\n";
+        exit(1);
+    }
+
+    buy_sound.setBuffer(buy_buffer);
+    buy_sound.setVolume(10);
+
     size.x = window.getSize().x - 100;
     size.y = window.getSize().y - 80;
     position.x = window.getSize().x / 2 - size.x / 2;
@@ -60,6 +68,7 @@ void Menu::handle_input(char input) {
     switch (input) {
     case '1':
         if (player.money >= player.writing_courses_cost) {
+            buy_sound.play();
             player.money -= player.writing_courses_cost;
             player.writing_courses_cost += player.writing_courses_cost / 2.0;
             player.writing_courses++;
@@ -71,6 +80,7 @@ void Menu::handle_input(char input) {
             player.money -= player.equipments_cost;
             player.equipments_cost += player.equipments_cost / 2.0;
             player.equipments++;
+            buy_sound.play();
         }
         break;
 
@@ -79,6 +89,7 @@ void Menu::handle_input(char input) {
             player.money -= player.ebooks_cost;
             player.ebooks_cost += player.ebooks_cost / 2.0;
             player.ebooks++;
+            buy_sound.play();
         }
         break;
     
@@ -87,6 +98,7 @@ void Menu::handle_input(char input) {
             player.money -= player.physical_books_cost;
             player.physical_books_cost += player.physical_books_cost / 2.0;
             player.physical_books++;
+            buy_sound.play();
         }
         break;
     
@@ -97,6 +109,7 @@ void Menu::handle_input(char input) {
             player.literary_agents++;
             player.ebooks_cost -= player.literary_agents * 100;
             player.physical_books_cost -= player.literary_agents * 100;
+            buy_sound.play();
         }
         break;
     
@@ -105,6 +118,7 @@ void Menu::handle_input(char input) {
             player.money -= player.reviwers_cost;
             player.reviwers_cost += player.reviwers_cost / 2.0;
             player.reviwers++;
+            buy_sound.play();
         }
         break;
     
@@ -113,6 +127,7 @@ void Menu::handle_input(char input) {
             player.money -= player.writers_cost;
             player.writers_cost += player.writers_cost / 2.0;
             player.writers++;
+            buy_sound.play();
         }
         break;
     
