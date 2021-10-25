@@ -60,7 +60,7 @@ void Board::mark_outside_bubbles() {
             miss_sound.play();
             bubble.alive = false;
             int resources = player.writing_courses + player.ebooks + player.physical_books + player.literary_agents + player.reviwers + player.writers;
-            player.money -= (player.equipments * 2) > resources ? 0 : resources - player.equipments;
+            player.money -= (player.equipments * 2) > resources ? 0 : resources - player.equipments + 1;
             player.current_combo = 0;
         }
     }

@@ -3,7 +3,7 @@
 #define WINDOW_W 800
 #define WINDOW_H 600
 
-Game::Game() : window(sf::VideoMode(WINDOW_W, WINDOW_H), "Typing"), board{window, player}, menu {window, player} {
+Game::Game() : window(sf::VideoMode(WINDOW_W, WINDOW_H), "Typing"), board{window, player}, menu {window, player}, background {5, "assets/textures/background/bg", 30, WINDOW_W, WINDOW_H} {
     if (!background_music.openFromFile("assets/sounds/lofi.ogg")) {
         std::cout << "Failed to open lofi.ogg\n";
         exit(1);
@@ -50,6 +50,8 @@ void Game::gameplay() {
     board.update();
     player.update();
     window.clear();
+    background.update();
+    background.draw(window);
     board.draw();
     window.display();
 }
