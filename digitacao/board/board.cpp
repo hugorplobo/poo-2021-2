@@ -16,7 +16,7 @@ Board::Board(sf::RenderWindow& window, Player& player) : window {window}, pencil
     critical_hit_sound.setBuffer(hit_buffer);
     critical_hit_sound.setVolume(100);
     miss_sound.setBuffer(miss_buffer);
-    miss_sound.setVolume(10);
+    miss_sound.setVolume(5);
 }
 
 void Board::update() {
@@ -38,7 +38,7 @@ void Board::draw() {
     }
 
     pencil.write("Money: $" + std::to_string(player.money) + "\nCombo: " + std::to_string(player.current_combo), 10, 10, 30, sf::Color::White);
-    pencil.write("Press ESC to open menu", 10, window.getSize().y - 50, 30, sf::Color::White);
+    pencil.write("Press ESC to open menu", window.getSize().x - 300, window.getSize().y - 40, 20, sf::Color::White);
 }
 
 bool Board::check_new_bubble() {

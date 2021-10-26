@@ -8,12 +8,12 @@
 #include "../pencil/pencil.hpp"
 #include "../player/player.hpp"
 #include "../menu/menu.hpp"
-#include "../animated_sprite/animated_sprite.hpp"
 
 class Game {
     sf::RenderWindow window;
     sf::Music background_music;
-    AnimatedSprite background;
+    sf::Texture background_texture;
+    sf::Sprite background_sprite;
     Player player;
     Board board;
     Menu menu;
