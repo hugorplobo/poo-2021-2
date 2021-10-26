@@ -37,8 +37,8 @@ void Board::draw() {
         bubble.draw(window);
     }
 
-    pencil.write("Money: $" + std::to_string(player.money) + "\nCombo: " + std::to_string(player.current_combo), 10, 10, 30, sf::Color::White);
-    pencil.write("Press ESC to open menu", window.getSize().x - 300, window.getSize().y - 40, 20, sf::Color::White);
+    pencil.write("Dinheiro: $" + std::to_string(player.money) + "\nCombo: " + std::to_string(player.current_combo), 10, 10, 30, sf::Color::White);
+    pencil.write("Aperte ESC para abrir o menu", window.getSize().x - 320, window.getSize().y - 40, 18, sf::Color::White);
 }
 
 bool Board::check_new_bubble() {

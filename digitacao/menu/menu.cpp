@@ -50,18 +50,18 @@ void Menu::draw_menu_box() {
 }
 
 void Menu::draw_items() {
-    std::string to_render {"Items: \n\t[1] - Writing course $" + std::to_string(player.writing_courses_cost) + "\n\t[2] - Improve equipment $" + std::to_string(player.equipments_cost)};
-    pencil.write(to_render, position.x + 12, position.y + 60, 22, sf::Color::White);
+    std::string to_render {"Itens: \n\t[1] - $" + std::to_string(player.writing_courses_cost) + " Curso de escrita: Aumenta a chance de acerto\n\tdobrado"  + "\n\t[2] - $" + std::to_string(player.equipments_cost) + " Melhorar equipamento: Reduz a perda de dinheiro\n\tem erros"};
+    pencil.write(to_render, position.x + 12, position.y + 60, 18, sf::Color::White);
 }
 
 void Menu::draw_actions() {
-    std::string to_render {"Actions: \n\t[3] - Publish an ebook $" + std::to_string(player.ebooks_cost) + "\n\t[4] - Publish a physical book $" + std::to_string(player.physical_books_cost)};
-    pencil.write(to_render, position.x + 12, position.y + 180, 22, sf::Color::White);
+    std::string to_render {"Acoes: \n\t[3] - $" + std::to_string(player.ebooks_cost) + " Publicar um ebook: Aumenta um pouco o lucro\n\tpor letra" + "\n\t[4] - $" + std::to_string(player.physical_books_cost) + " Publicar um livro fisico: Aumenta muito o lucro\n\tpor letra"};
+    pencil.write(to_render, position.x + 12, position.y + 200, 18, sf::Color::White);
 }
 
 void Menu::draw_contracts() {
-    std::string to_render {"Contracts: \n\t[5] - Literary agent $" + std::to_string(player.literary_agents_cost) + "\n\t[6] - Reviewer $" + std::to_string(player.reviwers_cost) + "\n\t[7] - Writer $" + std::to_string(player.writers_cost)};
-    pencil.write(to_render, position.x + 12, position.y + 300, 22, sf::Color::White);
+    std::string to_render {"Contratos: \n\t[5] - $" + std::to_string(player.literary_agents_cost) + " Agente literario: Torna mais barato publicar\n\tlivros" + "\n\t[6] - $" + std::to_string(player.reviwers_cost) + " Reviewer: Aumenta o lucro por letra baseado no\n\tcombo atual" + "\n\t[7] - $" + std::to_string(player.writers_cost) + " Writer: Ganho passivo de dinheiro"};
+    pencil.write(to_render, position.x + 12, position.y + 340, 18, sf::Color::White);
 }
 
 void Menu::handle_input(char input) {

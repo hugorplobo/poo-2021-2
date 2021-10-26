@@ -4,7 +4,7 @@
 
 class Player {
 public:
-    int money {0};
+    int money {100};
     int current_combo {0};
     int writing_courses {0};
     int equipments {0};
