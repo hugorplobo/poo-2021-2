@@ -25,8 +25,9 @@ void Controller::send_tweet(const std::string& username, const std::string& msg)
 
 void Controller::send_rt(const std::string& username, int tweet_id, const std::string& msg) {
     Tweet* tweet = this->create_twitter(username, msg);
-    tweet->set_rt(this->get_tweet(tweet_id));
-    this->get_user(username)->send_tweet(tweet);
+    User* user = this->get_user(username);
+    tweet->set_rt(user->get_inbox().get_tweet(tweet_id));
+    user->send_tweet(tweet);
 }
 
 void Controller::rm_user(const std::string& username) {
