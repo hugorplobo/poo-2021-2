@@ -45,16 +45,16 @@ std::ostream& operator<<(std::ostream& os, Tweet& tweet) {
 
     do {
         if (next_rt->deleted) {
-            std::cout << std::string(depth * 2, ' ') << colors::faint << "Esse tweet foi apagado - ID: " << next_rt->get_id() << colors::reset << std::endl;
+            os << std::string(depth * 2, ' ') << colors::faint << "Esse tweet foi apagado - ID: " << next_rt->get_id() << colors::reset << std::endl;
         } else {
-            std::cout << std::string(depth * 2, ' ') << colors::blue << "@" << next_rt->get_username() << colors::reset << ":" << next_rt->get_msg();
-            std::cout << " [ ";
+            os << std::string(depth * 2, ' ') << colors::blue << "@" << next_rt->get_username() << colors::reset << ":" << next_rt->get_msg();
+            os << " [ ";
 
             for (auto& user : next_rt->likes) {
-                std::cout << colors::blue << "@" << user << colors::reset << (user == *(--next_rt->likes.end()) ? " " : ", ");
+                os << colors::blue << "@" << user << colors::reset << (user == *(--next_rt->likes.end()) ? " " : ", ");
             }
 
-            std::cout << "]" << colors::reset << " - ID: " << next_rt->get_id() << std::endl;
+            os << "]" << colors::reset << " - ID: " << next_rt->get_id() << std::endl;
         }
 
         next_rt = next_rt->rt_from;
